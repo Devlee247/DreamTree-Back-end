@@ -16,8 +16,9 @@ router.get('/', async (req, res) => {
 		returnArr.push(store);
 	});
 	
+	res.json(returnArr);
 	
-	res.send({stores:returnArr});
+	// res.send({stores:returnArr});
 });
 
 module.exports = router;

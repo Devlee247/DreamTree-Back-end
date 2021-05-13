@@ -50,9 +50,10 @@ router.get('/', async (req, res) => {
 	});
 	
 	returnArr.sort(storesort);
-	console.log(returnArr);
+	//console.log(returnArr);
 	
-	res.send({stores:returnArr});
+  	res.json(returnArr);
+	// res.send({stores:returnArr});
 });
 
 module.exports = router;
