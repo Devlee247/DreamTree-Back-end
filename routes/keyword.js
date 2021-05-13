@@ -11,12 +11,8 @@ router.get('/', async (req, res) => {
 	const keywordquery = new RegExp(storename);
 	const stores = await _Store.find({name: keywordquery},{"_id":false, "distance":false, "__v":false, menus: {"_id":false}});
 	
-	returnArr = []
-	await stores.forEach(store=>{
-		returnArr.push(store);
-	});
+	res.json(stores);
 	
-	res.json(returnArr);
 	
 	// res.send({stores:returnArr});
 });

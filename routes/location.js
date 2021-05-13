@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 		if( dist <= distance ){
 			store.distance = dist;
 			returnArr.push(store);
-			console.log("dist:"+store.distance);
+			//console.log("dist:"+store.distance);
 		}		
 	});
 	
