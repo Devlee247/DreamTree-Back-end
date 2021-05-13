@@ -4,11 +4,19 @@ const { Schema } = mongoose;
 const storeSchema = new Schema({
 	name: { type: String, required: true },
 	type: { type: String, required: true },
+	address: { type: String, required: true},
 	phoneNumber: { type: String, required: true },
 	dong: { type: String, required: true },
-	location: { type: { type: String }, coordinates: [] }
+	latitude: { type: Number, required: true},
+	longitude: { type: Number, required: true},
+	menus:
+		[
+			{
+				menu: {type: String},
+				price: {type: String}
+			}
+		]
 });
 
-storeSchema.index({ location: "2dsphere"});
 
 module.exports = mongoose.model('Store', storeSchema);
