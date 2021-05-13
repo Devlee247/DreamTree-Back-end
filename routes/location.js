@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
 	await stores.forEach(store=>{
 		if( getDistance( store.latitude,store.longitude, latitude,logitude ) <= distance )
 			returnArr.push(store);
-	})
+	});
 	
 	res.send({stores:returnArr});
 });

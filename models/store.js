@@ -11,10 +11,11 @@ const storeSchema = new Schema({
 	longitude: { type: Number, required: true},
 	imgurl: {type: String, required:true},
 	rating: {type: Number, required:true},
+	storeID : {type:String , required:true},
 	menus:
 		[
 			{
-				menu: {type: String},
+				name: {type: String},
 				price: {type: String}
 			}
 		]

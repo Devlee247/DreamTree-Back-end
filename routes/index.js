@@ -16,23 +16,36 @@ router.get('/', async (req, res, next) => {
 	const stores = jsonData.stores;
 	stores.forEach(store => {
 		var new_Store = new _Store();
+		//console.log(store);
+		new_Store.name = store.name;
+		new_Store.type = store.type;
+		new_Store.address = store.address;
+		new_Store.phoneNumber = store.phoneNumber;
+		new_Store.dong = store.dong;
+		new_Store.latitude = store.longitude;
+		new_Store.longitude = store.latitude;
+		new_Store.storeID = store.storeID;
+		if(store.imageURL == '')
+			new_Store.imgurl = "https://lh3.googleusercontent.com/proxy/Iwa-Cp4oiSF-7_gQ9dv7KM5zPv-Ff4O7-MeDkfAZIbin-MgMTQdaJO4qIzedNSNpE3C7mB6tQwzknwL-VsnA2Ihwtj5Veezxiv28XXHgaugbxtZwCIIXQ90";
+		else
+			new_Store.imgurl = store.imageURL;
+		if(store.rating == ''){
+			new_Store.rating = 0.00;	
+		}
+		else{
+			new_Store.rating = store.rating;	
+		}
 		
-		new_Store.name = store.가맹점명;
-		new_Store.type = store.업종명;
-		new_Store.address = store.가맹점주소;
-		new_Store.phoneNumber = store.전화;
-		new_Store.dong = store.행정동;
-		new_Store.latitude = store.경도;
-		new_Store.longitude = store.위도;
-		new_Store.imgurl = 'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2250264258B8FEC82D';
-		new_Store.rating = Math.abs((Math.random()*10)-5).toFixed(2);
-		var new_list = [];
-		new_list.push({menu:"somthing", price:"100"},{menu:"sth2",price:"200"});
-		new_Store.menus = new_list;
+		
+		//new_Store.rating = Math.abs((Math.random()*10)-5).toFixed(2);
+		new_Store.menus = store.menus;
+		// var new_list = [];
+		// new_list.push({menu:"somthing", price:"100"},{menu:"sth2",price:"200"});
+		// new_Store.menus = new_list;
 		
 		
 		//console.log(new_Store.rating);
-		//new_Store.save();
+		//new_Store.save(); 
 		//console.log(new_Store);
 	});
 	
