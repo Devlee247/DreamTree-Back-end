@@ -25,6 +25,7 @@ router.get('/', async (req, res, next) => {
 		new_Store.latitude = store.longitude;
 		new_Store.longitude = store.latitude;
 		new_Store.storeID = store.storeID;
+		new_Store.distance = 0.0;
 		if(store.imageURL == '')
 			new_Store.imgurl = "https://lh3.googleusercontent.com/proxy/Iwa-Cp4oiSF-7_gQ9dv7KM5zPv-Ff4O7-MeDkfAZIbin-MgMTQdaJO4qIzedNSNpE3C7mB6tQwzknwL-VsnA2Ihwtj5Veezxiv28XXHgaugbxtZwCIIXQ90";
 		else
@@ -50,7 +51,7 @@ router.get('/', async (req, res, next) => {
 	});
 	
   try {
-	  const store = await _Store.find({},{"_id":false, "__v":false, menus: {"_id":false}});
+	  const store = await _Store.find({},{"_id":false, "__v":false, "distance":false, menus: {"_id":false}});
 	  //console.log(store);
 	  res.json(store);
 	  // res.render('index', { title: 'Express' });

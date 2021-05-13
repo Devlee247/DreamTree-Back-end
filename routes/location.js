@@ -25,6 +25,10 @@ function getDistance(lat1, lon1, lat2, lon2) {
     return dist;
 }
 
+function storesort(a,b){
+	return a.distance > b.distance ? 1 : (a.distance < b.distance)? -1 : 0;
+}
+
 /* GET home page. */
 router.get('/', async (req, res) => {
 	
@@ -34,11 +38,19 @@ router.get('/', async (req, res) => {
 	
 	const stores = await _Store.find({},{"_id":false, "__v":false, menus: {"_id":false}});
 	
-	returnArr = []
+	returnArr = new Array();
+	forsort = [];
 	await stores.forEach(store=>{
-		if( getDistance( store.latitude,store.longitude, latitude,logitude ) <= distance )
+		dist = getDistance( store.latitude,store.longitude, latitude,logitude );
+		if( dist <= distance ){
+			store.distance = dist;
 			returnArr.push(store);
+			console.log("dist:"+store.distance);
+		}		
 	});
+	
+	returnArr.sort(storesort);
+	console.log(returnArr);
 	
 	res.send({stores:returnArr});
 });

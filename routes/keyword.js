@@ -9,7 +9,7 @@ const fs = require('fs');
 router.get('/', async (req, res) => {
 	let storename = req.query.storename;
 	const keywordquery = new RegExp(storename);
-	const stores = await _Store.find({name: keywordquery},{"_id":false, "__v":false, menus: {"_id":false}});
+	const stores = await _Store.find({name: keywordquery},{"_id":false, "distance":false, "__v":false, menus: {"_id":false}});
 	
 	returnArr = []
 	await stores.forEach(store=>{
