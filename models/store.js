@@ -9,6 +9,8 @@ const storeSchema = new Schema({
 	dong: { type: String, required: true },
 	latitude: { type: Number, required: true},
 	longitude: { type: Number, required: true},
+	imgurl: {type: String, required:true},
+	rating: {type: Number, required:true},
 	menus:
 		[
 			{
